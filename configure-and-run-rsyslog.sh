@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $PAPERTRAIL_PORT ]; then
+if [ $PAPERTRAIL_HOST && $PAPERTRAIL_PORT ]; then
   EXTRA_CONFIG="
 \$ModLoad imudp
 \$UDPServerRun 514
@@ -24,7 +24,7 @@ if [ $PAPERTRAIL_PORT ]; then
 \$ActionQueueTimeoutEnqueue 10
 \$ActionQueueDiscardSeverity 0
 
-*.*            @@logs.papertrailapp.com:$PAPERTRAIL_PORT"
+*.*            @@$PAPERTRAIL_HOST:$PAPERTRAIL_PORT"
 
   echo "$EXTRA_CONFIG" >> /etc/rsyslog.conf
 

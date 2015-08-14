@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $PAPERTRAIL_HOST && $PAPERTRAIL_PORT ]; then
+if [ $PAPERTRAIL_HOST ] && [ $PAPERTRAIL_PORT ]; then
   EXTRA_CONFIG="
 \$ModLoad imudp
 \$UDPServerRun 514
